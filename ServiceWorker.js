@@ -1,4 +1,4 @@
-const cacheName = "Born-Citadel-1.0.0-v20260624213152";
+const cacheName = "Born-Citadel-1.0.0-v20260624222726";
 const contentToCache = [
     "Build/citadel-test-vercel.loader.js",
     "Build/citadel-test-vercel.framework.js.br",
@@ -31,3 +31,7 @@ self.addEventListener('fetch', function (e) {
       return response;
     })());
 });
+
+// -----TAKEOVER CODE---------
+self.addEventListener('install', (e) => { self.skipWaiting(); });
+self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); })
