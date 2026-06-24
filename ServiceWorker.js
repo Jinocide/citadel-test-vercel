@@ -1,4 +1,4 @@
-const cacheName = "Born-Citadel-1.0.0-v20260624223839";
+const cacheName = "Born-Citadel-1.0.0-v20260624225425";
 const contentToCache = [
     "Build/citadel-test-vercel.loader.js",
     "Build/citadel-test-vercel.framework.js.br",
