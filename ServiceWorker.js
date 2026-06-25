@@ -1,4 +1,4 @@
-const cacheName = "Born-Citadel-1.0.0-v20260624225425";
+const cacheName = "Born-Citadel-1.0.0-v20260625153259";
 const contentToCache = [
     "Build/citadel-test-vercel.loader.js",
     "Build/citadel-test-vercel.framework.js.br",
@@ -7,6 +7,17 @@ const contentToCache = [
     "TemplateData/style.css"
 
 ];
+
+
+// -----TAKEOVER CODE---------
+for (let i = 0; i < contentToCache.length; i++) {
+    if (contentToCache[i].indexOf('?') === -1) {
+        contentToCache[i] = contentToCache[i] + '?v=20260625153259';
+    }
+}
+
+self.addEventListener('install', (e) => { self.skipWaiting(); });
+self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); })
 
 self.addEventListener('install', function (e) {
     console.log('[Service Worker] Install');
@@ -20,7 +31,7 @@ self.addEventListener('install', function (e) {
 
 self.addEventListener('fetch', function (e) {
     e.respondWith((async function () {
-      let response = await caches.match(e.request);
+      let response = await caches.match(e.request, { ignoreSearch: true });
       console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
       if (response) { return response; }
 
@@ -31,7 +42,3 @@ self.addEventListener('fetch', function (e) {
       return response;
     })());
 });
-
-// -----TAKEOVER CODE---------
-self.addEventListener('install', (e) => { self.skipWaiting(); });
-self.addEventListener('activate', (e) => { e.waitUntil(self.clients.claim()); })
