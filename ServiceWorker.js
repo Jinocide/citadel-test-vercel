@@ -1,4 +1,4 @@
-const cacheName = "Born-Citadel-1.0.0-v20260630215213";
+const cacheName = "Born-Citadel-1.0.0-v20260630220007";
 const contentToCache = [
     "Build/citadel-test-vercel.loader.js",
     "Build/citadel-test-vercel.framework.js.br",
@@ -12,7 +12,7 @@ const contentToCache = [
 // -----TAKEOVER CODE---------
 for (let i = 0; i < contentToCache.length; i++) {
     if (contentToCache[i].indexOf('?') === -1) {
-        contentToCache[i] = contentToCache[i] + '?v=20260630215213';
+        contentToCache[i] = contentToCache[i] + '?v=20260630220007';
     }
 }
 
